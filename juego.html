@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salto del Div al Hacer Clic</title>
+  <style>
+    body {
+      background-image: url(imagenes/png-transparent-white-and-red-basketball-hoop-basketball-court-canestro-basketball-material-png-material-angle-rectangle-thumbnail.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 200px;
+      height: 200px;
+      padding: 200px;
+    }
+    .cuadrado {
+      width: 100px;
+      height: 100px;
+      background-image: url(imagenes/baloncesto\ \(3\).png);
+      background-position: center;
+     background-size: cover;
+      position: absolute;
+      top: 75%; /* Posición inicial del cuadrado */
+      left: 50%;
+      transform: translate(-50%, -100%); /* Centrado inicial */
+      transition: transform 0.1s ease-in-out; /* Transición para el efecto de salto */
+      border-radius: 50%;
+    }
+    .salto {
+      transform: translate(-50%, -500%) scale(1.2); /* Subir 100px y aumentar ligeramente el tamaño */
+    }
+  </style>
+</head>
+<body>
+  <div class="cuadrado" id="cuadrado"></div>
+
+  <script>
+    const cuadrado = document.getElementById('cuadrado'); // Obtener el div cuadrado
+
+    // Función para aplicar el salto al cuadrado
+    function saltarCuadrado() {
+      // Añadir la clase 'salto' al cuadrado 
+      cuadrado.classList.add('salto');
+
+      // Remover la clase 'salto' después de la animación para que pueda repetirse
+      setTimeout(() => {
+        cuadrado.classList.remove('salto');
+      }, 300); // El tiempo de la animación es de 0.3 segundos
+    }
+
+    // Agregar el evento de clic en todo el documento
+    document.body.addEventListener('click', saltarCuadrado);
+  </script>
+</body>
+</html>
